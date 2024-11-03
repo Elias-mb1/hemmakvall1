@@ -4,19 +4,13 @@ import { store } from './redux/store';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SearchBar from './components/Searchbarr';
 import FavoritesList from './components/FavoritesList';
-import { Helmet } from 'react-helmet';
 
 const App = () => (
   <Provider store={store}>
-    <Helmet>
-      <title>Filmtjänst</title>
-      <meta name="description" content="Sök och spara dina favoritfilmer." />
-      <meta name="robots" content="index, follow" />
-    </Helmet>
-
-    <Router>
+    <Router> {/* Ensure that your app is wrapped in a Router */}
       <nav>
-        <Link to="/favorites">Sparade Favoriter</Link>
+        <Link to="/">Hem</Link> {/* Ensure all Links are inside the Router */}
+        <Link to="/favorites" className="ml-4">Sparade Favoriter</Link> {/* Add margin for spacing */}
       </nav>
       <Routes>
         <Route path="/" element={<SearchBar />} />
@@ -27,5 +21,3 @@ const App = () => (
 );
 
 export default App;
-
-
